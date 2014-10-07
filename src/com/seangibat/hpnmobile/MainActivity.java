@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.webkit.WebSettings;
-import android.webkit.WebSettings.PluginState;
-import android.webkit.WebSettings.ZoomDensity;
 import android.webkit.WebView;
 
 
