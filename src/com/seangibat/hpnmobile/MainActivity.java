@@ -2,6 +2,7 @@ package com.seangibat.hpnmobile;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.ViewGroup;
@@ -18,8 +19,8 @@ public class MainActivity extends Activity {
     
     @SuppressLint("SetJavaScriptEnabled") @Override
     protected void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(Bundle savedInstanceState);
-    	setContentView(R.layout.state_preserving_impl);
+    	super.onCreate(savedInstanceState);
+    	setContentView(R.layout.activity_main);
 
         initUI();
         
@@ -52,6 +53,42 @@ public class MainActivity extends Activity {
     	}
     	
     	webViewPlaceholder.addView(mWebView);    	
+    }
+    
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+      if (mWebView != null)
+      {
+        // Remove the WebView from the old placeholder
+        webViewPlaceholder.removeView(mWebView);
+      }
+   
+      super.onConfigurationChanged(newConfig);
+       
+      // Load the layout resource for the new configuration
+      setContentView(R.layout.activity_main);
+   
+      // Reinitialize the UI
+      initUI();
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+      super.onSaveInstanceState(outState);
+   
+      // Save the state of the WebView
+      mWebView.saveState(outState);
+    }
+     
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+      super.onRestoreInstanceState(savedInstanceState);
+   
+      // Restore the state of the WebView
+      mWebView.restoreState(savedInstanceState);
     }
     
     private void initiateRefresh() {
