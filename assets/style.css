@@ -332,6 +332,8 @@ dt {
     padding: 1px 4px !important;
 }
 
+
+
 .postprofile dd {
     word-wrap: break-word;
 }
@@ -340,8 +342,12 @@ dt {
     display: none;
 }
 
-.lastpost img {
-    display: none !important;
+.lastpost img { 
+	width: 2em;
+	height: 2em;
+	opacity:.3;
+	float: right;
+	margin:0 !important;
 }
 
 .ytv {

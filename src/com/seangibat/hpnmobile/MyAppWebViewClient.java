@@ -43,15 +43,17 @@ public class MyAppWebViewClient extends WebViewClient {
     }
 
     private WebResourceResponse getCssWebResourceResponse() {
-    	InputStream is = null;
-		try {
-			is = context.getAssets().open("style.css");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	WebResourceResponse wrr = new WebResourceResponse("text/css","UTF-8", is);
-        return wrr;
+        InputStream is = null;
+        try {
+            is = context.getAssets().open("style.css");
+            WebResourceResponse wrr = new WebResourceResponse("text/css","UTF-8", is);
+            return wrr;
+        } 
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
     }
     
     @SuppressLint("NewApi") @Override  
