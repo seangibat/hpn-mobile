@@ -6,6 +6,7 @@ import java.io.InputStream;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.webkit.WebResourceResponse;

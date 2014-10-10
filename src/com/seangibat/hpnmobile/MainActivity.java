@@ -27,8 +27,13 @@ public class MainActivity extends Activity {
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
 
-        mWebView.loadUrl("http://forums.hipinion.com/");
+        
         mWebView.setWebViewClient(new MyAppWebViewClient(MainActivity.this, refresher));
+        
+        if (savedInstanceState == null)
+        {
+        	mWebView.loadUrl("http://forums.hipinion.com/");
+        }
         
         refresher.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -36,10 +41,21 @@ public class MainActivity extends Activity {
                 initiateRefresh();
             }
         });
-        refresher.setColorSchemeResources(R.color.color1,
-                R.color.color2,
-                R.color.color3,
-                R.color.color4);
+        refresher.setColorSchemeResources(R.color.color1, R.color.color2, R.color.color3, R.color.color4);
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+    	super.onSaveInstanceState(outState);
+    	mWebView.saveState(outState);
+    }
+     
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+    	super.onRestoreInstanceState(savedInstanceState);
+    	mWebView.restoreState(savedInstanceState);
     }
     
     private void initiateRefresh() {
