@@ -2,14 +2,14 @@
 <resources>
     <color
         name="color1"
-        >#ea8400</color>
+        >#222</color>
     <color
         name="color2"
-        >#6633cc</color>
+        >#444</color>
     <color
         name="color3"
-        >#00BFFF</color>
+        >#111</color>
     <color
         name="color4"
-        >#990000</color>
+        >#333</color>
 </resources>

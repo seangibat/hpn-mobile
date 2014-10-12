@@ -57,6 +57,12 @@ public class MyAppWebViewClient extends WebViewClient {
         }
     }
     
+    @Override
+    public void onPageStarted (WebView view, String url, Bitmap favicon){
+    	refresherView.setRefreshing(true);
+    }
+    
+    //test
     @SuppressLint("NewApi") @Override  
     public void onPageFinished(WebView view, String url) {
     	if (refresherView.isRefreshing()){
