@@ -17,10 +17,12 @@ public class MyAppWebViewClient extends WebViewClient {
     
 	private Context context;
 	private SwipeRefreshLayout refresherView;
+	private String theme;
 	
-	public MyAppWebViewClient(final Context myContext, SwipeRefreshLayout refresher){
+	public MyAppWebViewClient(final Context myContext, SwipeRefreshLayout refresher, String themeAttr){
 	    context = myContext;
 	    refresherView = refresher;
+	    theme = themeAttr;
 	}
 
 	@Override
@@ -46,7 +48,7 @@ public class MyAppWebViewClient extends WebViewClient {
     private WebResourceResponse getCssWebResourceResponse() {
         InputStream is = null;
         try {
-            is = context.getAssets().open("style.css");
+            is = context.getAssets().open(theme + ".css");
             WebResourceResponse wrr = new WebResourceResponse("text/css","UTF-8", is);
             return wrr;
         } 
@@ -62,7 +64,6 @@ public class MyAppWebViewClient extends WebViewClient {
     	refresherView.setRefreshing(true);
     }
     
-    //test
     @SuppressLint("NewApi") @Override  
     public void onPageFinished(WebView view, String url) {
     	if (refresherView.isRefreshing()){

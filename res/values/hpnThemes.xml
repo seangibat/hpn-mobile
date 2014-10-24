@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="styles_array">
+        <item>default</item>
+        <item>nightbus</item>
+    </string-array>
+</resources>
